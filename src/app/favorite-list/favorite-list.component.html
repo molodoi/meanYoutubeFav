@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2>Vidéos favorites</h2>    
+  </div>
+</div>  
+<div class="row">
+  <div *ngFor="let fav of favorites" class="col-lg-4 favframe">
+    <div class="panel panel-default">
+      <div class="panel-heading">{{ fav.title }}</div>
+      <div class="panel-body">
+        <figure>
+          <img [src]="fav.thumbnailDefaultUrl" alt="{{fav.title}}" class="img-rounded img-responsive w100">
+          <figcaption>
+            <p>Categorie : {{fav.category}}</p>
+            <p class="text-justify">{{fav.description}}</p>
+          </figcaption>
+        </figure>
+        <hr>
+        <p>Commentaire :<br /> {{fav.userDescription}}</p>
+        <hr>
+        <a href="https://www.youtube.com/watch?v={{fav.videoId}}" class="btn btn-default" target="_blank">Voir la vidéo</a>        
+        <a href="{{fav.channelUrl}}" class="btn btn-default" target="_blank">La chaine YouTube</a>
+        <a class="btn btn-danger" (click)="deleteFavorite(fav._id)">Supprimer</a>
+      </div>
+    </div>
+  </div>
+</div>

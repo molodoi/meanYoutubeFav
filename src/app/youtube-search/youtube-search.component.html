@@ -1,0 +1,52 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <input #searchterm placeholder="recherche YouTube" class="form-control input-lg"> 
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12"> 
+    <div class="mb20">
+      <h1>Search Results</h1>
+      <h2 class="lead">
+      <strong class="text-danger" *ngIf="results">{{ results.length }}</strong> 
+      results were found for the search for <strong class="text-danger">{{ searchterm.value }}</strong></h2>								
+    </div>
+    <hr />
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-6"> 
+    <section class="col-xs-12 col-sm-6 col-md-12">
+      <article *ngFor="let video of results" class="search-result row one-result">
+        
+        <div class="col-xs-12 col-sm-12 col-md-3">
+            <img [src]="video.snippet.thumbnails.default.url" (click)="onClick(video.id.videoId)"  class="thumbnail img-responsive youtube-thumbnail"/>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+          <h3><a href="#" title="">{{video.snippet.title}}</a></h3>
+          <p>{{video.snippet.description}}</p>			 			
+          <span class="plus text-right">
+            <button class="btn btn-lg btn-success" (click)="onClick(video.id.videoId)"><i class="glyphicon glyphicon-play"></i> Lire</button>
+            <button class="btn btn-lg btn-info"  (click)="addToFavorites(video)"><i class="glyphicon glyphicon-plus"></i> Ajouter au favoris</button>
+          </span>
+        </div>
+        <span class="clearfix borda"></span>
+        <hr />
+      </article>
+    </section>
+    
+  </div>
+
+  <div *ngIf="results" class="col-lg-6">
+    <div class="embed-responsive embed-responsive-4by3" >
+        <iframe id="cartoonVideo"
+          [src]="videoUrl" 
+          frameborder="0" 
+          allowfullscreen></iframe>
+    </div>
+    </div>
+</div>
