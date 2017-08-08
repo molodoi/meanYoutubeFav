@@ -7,6 +7,7 @@
 
 # dependencies
 /node_modules
+/server/constants.js
 
 # IDEs and editors
 /.idea
